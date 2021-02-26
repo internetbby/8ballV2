@@ -1,3 +1,11 @@
+:root {
+  --light-shade: #EBEBE7;
+  --light-accent: #948C95;
+  --main-color: #686B65; 
+  --dark-accent: #8B848D;
+  --dark-shade: #1A1D1D;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -10,44 +18,46 @@ body {
   display: grid;
   grid-template-columns: [start-line] 1fr [body-line] 3fr [body-end] 1fr [end-line];
   grid-template-rows: [start-line] 1fr [body-line] 8fr [body-end] 1fr [end-line];
+
+  background-color: var(--dark-shade);
 }
 
 .text-area {
   grid-column: body-line / body-end;
   grid-row: body-line/body-end;
 
- 
-
   width: 100%;
 
-  background-color: lightgray;
+  background-color: var(--light-shade);
 
   overflow: hidden;
 }
 
-form{
-    width: 100%;
-    height: 100%;
-    display: grid;
-    grid-template-columns: [start-line]6fr [middle-line] 1fr [end-line];
-    grid-template-rows: [start-line] 8fr [middle-line] 1fr [end-line];
-
-}
-ul{
-    grid-column: start-line / end-line;
-    grid-row: start-line / end-line;
-    overflow-y: scroll;
-    height: 100%;
+form {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: [start-line]6fr [middle-line] 1fr [end-line];
+  grid-template-rows: [start-line] 8fr [middle-line] 1fr [end-line];
 }
 
-input#userInput{
-    grid-column: start-line/middle-line;
-    grid-row: middle-line/end-line;
+ul#main-text-area {
+  grid-column: start-line / end-line;
+  grid-row: start-line / middle-line;
+  overflow-y: auto;
+  height: 100%;
 }
 
-input#submit{
-    grid-column: middle-line/middle-line;
-    grid-row: middle-line/end-line;
+input#userInput {
+  grid-column: start-line/middle-line;
+  grid-row: middle-line/end-line;
+}
+
+input#submit {
+  grid-column: middle-line/middle-line;
+  grid-row: middle-line/end-line;
+
+  font-size: 2em;
 }
 
 #user-question,
@@ -58,14 +68,12 @@ li {
   padding: 20px 20px 0px 20px;
 }
 
-li.user-question{
-    color: red;
-    text-align: right;
+li.user-question {
+  color: red;
+  text-align: right;
 }
 
-li.answer{
-    color: blue;
-    text-align: left;
+li.answer {
+  color: blue;
+  text-align: left;
 }
-
-
