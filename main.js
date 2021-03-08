@@ -29,16 +29,41 @@ answers.push("You may rely on it");
 
 let random = Math.floor(Math.random() * answers.length + 1);
 
+let interrogationWords= ["will","should","can","?","Will", "Should", "Can"];
+let containsQuestion = false; 
+
+let userQuestion= userInput.value;
+console.log(userQuestion);
+
+function checkIfQuestion(userQuestion){
+  for (let i = 0; i<interrogationWords.length; i++ ){
+     containsQuestion = userQuestion.includes(interrogationWords[i]);
+  }
+
+
+  if (containsQuestion =false){
+    console.log("not a question"); 
+  }
+}
+
+
 chatForm.addEventListener("submit", (e) => {
   e.preventDefault();
   chatHistory.push(userInput.value);
+
+
+  let userQuestion= userInput.value;
+  console.log(userQuestion);
+  checkIfQuestion(userQuestion);
+
+
   random = Math.floor(Math.random() * answers.length);
   chatHistory.push(answers[random]);
   updateHistory();
 
-  console.log(random);
   console.log(answers[random]);
 });
+
 
 function updateHistory() {
   historyList.innerHTML = "";
@@ -48,6 +73,7 @@ function updateHistory() {
       newItem.classList.add("user-question");
     } else {
       newItem.classList.add("answer");
+
     }
     
     let text = document.createTextNode("user-question");
